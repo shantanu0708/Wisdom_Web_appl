@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title> Student Feedback </title>
+    <link rel="icon" type="image/x-icon" href="..\mentor_campus.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            height: 100%;
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #000;
+            color: #fff;
+            padding-top: 20px;
+        }
+
+        .sidebar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-menu {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar-menu li {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-menu li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .container {
+            margin-left: 250px; 
+            padding: 20px;
+        }
+
+        .content-header {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .row {
+            margin-bottom: 20px;
+        }
+
+        .decore {
+            height: 200px;
+            width: 100%;
+            text-align: center;
+            background-color: #fff;
+            border: 2px solid #343a40; 
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s ease; 
+        }
+
+        .decore:hover {
+            transform: scale(1.05); 
+        }
+
+        .decore h2 {
+            margin-top: 20px;
+            font-size: 24px; 
+        }
+
+        .decore h4 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-brand">Student Feedback</div>
+        <ul class="sidebar-menu">
+            <li><a href="student_dashboard.html"><i class="fas fa-home"></i> Home</a></li>
+            <!-- <li><a href="student_profile.html"><i class="fas fa-user"></i> Profile</a></li> -->
+            <li><a href="..\login.html"><i class="fas fa-sign-out-alt"></i> Logout </a></li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <div class="content-header">Subject-wise Feedback </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="decore">
+                    <a class="subject" href="..\courses\DS_form.html"><h2><strong>DATA SCIENCE</strong></h2></a>
+                    <h4>CSL348</h4>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="decore">
+                    <a class="subject" href="..\courses\CC_form.html"><h2><strong>CLOUD COMPUTING</strong></h2></a>
+                    <h4>CSL346</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="decore">
+                    <a class="subject" href="..\courses\ADS_form.html"><h2><strong>ADVANCE DATABASE SYSTEM</strong></h2></a>
+                    <h4>CSL347</h4>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="decore">
+                    <a class="subject" href="..\courses\OE_form.html"><h2><strong>OPEN ELECTIVE</strong></h2></a>
+                    <h4>----</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="decore">
+                    <a class="subject" href="..\courses\WT_form.html"><h2><strong>WEB TECHNOLOGY</strong></h2></a>
+                    <h4>CSL348</h4>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="decore">
+                    <a class="subject" href="..\courses\WT_lab_form.html"><h2><strong>WEB TECHNOLOGY LAB</strong></h2></a>
+                    <h4>CSP351</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="decore">
+                    <a class="subject" href="..\courses\CC_Lab_form.html"><h2><strong>CLOUD COMPUTING LAB</strong></h2></a>
+                    <h4>CSP351</h4>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="decore">
+                    <a class="subject" href="..\courses\MiniProject_form.html"><h2><strong>MINI PROJECT-II</strong></h2></a>
+                    <h4>CSD353</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="decore">
+                    <a class="subject" href="..\courses\Online_intern_form.html"><h2><strong>ONLINE INTERNSHIP SESSIONS</strong></h2></a>
+                    <h4>CST354</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

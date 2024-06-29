@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="..\mentor_campus.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #000;
+            color: #fff;
+            padding-top: 20px;
+        }
+
+        .sidebar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-menu {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar-menu li {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-menu li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .table {
+            background-color: rgba(255, 255, 255, 0.9); 
+        }
+        th, td {
+            border: 1px solid #dee2e6; 
+        }
+        th {
+            background-color: #343a40; 
+            color: #1a1919; 
+        }
+
+        .content {
+            margin-left: 250px;
+            margin-top: -50px;
+            padding: 20px;
+        }
+
+        .content-header {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-brand">Admin Dashboard</div>
+        <ul class="sidebar-menu">
+            <li><a href="admin_dashboard.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="admin_login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+        <!-- Student List -->
+        <div id="student-list" class="mt-5">
+            <div class="content-header">Registered Students</div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Login ID</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Batch ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email ID</th>
+                        <th>Phone No</th>
+                    </tr>
+                </thead>
+                <tbody id="students-table-body">
+                    <!-- Students will be appended here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-header">Student Details</div>
+
+        <!-- Add Student Form -->
+        <form autocomplete="off" id="add-student-form">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="text" class="form-label">Password</label>
+                <input type="text" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="mb-3">
+                <label for="batch_id" class="form-label">Batch</label>
+                <select class="form-select" id="batch_id" name="batch_id" required>
+                    <option value="">Select Batch</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="first_name" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="last_name" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email_id" class="form-label">Email ID</label>
+                <input type="email" class="form-control" id="email_id" name="email_id" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone_no" class="form-label">Phone No</label>
+                <input type="text" class="form-control" id="phone_no" name="phone_no" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Student</button>
+        </form>
+        
+    </div>
+
+    <!-- Bootstrap JS, jQuery, and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchStudents();
+            fetchBatches();
+
+            document.getElementById('add-student-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                addStudent();
+            });
+        });
+
+        function fetchBatches() {
+            fetch('get_batches.php')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch batches');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const batchSelect = document.getElementById('batch_id');
+                    batchSelect.innerHTML = ''; // Clear previous options
+                    data.forEach(batch => {
+                        const option = document.createElement('option');
+                        option.value = batch.batch_id;
+                        option.textContent = batch.batch_name;
+                        batchSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching batches:', error);
+                });
+        }
+
+        function fetchStudents() {
+            fetch('get_students.php')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch students');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const tableBody = document.getElementById('students-table-body');
+                    tableBody.innerHTML = ''; // Clear previous data
+                    data.forEach(student => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${student.loginId}</td>
+                            <td>${student.username}</td>
+                            <td>${student.password}</td>
+                            <td>${student.batch_id}</td>
+                            <td>${student.first_name}</td>
+                            <td>${student.last_name}</td>
+                            <td>${student.email_id}</td>
+                            <td>${student.phone_no}</td>`;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching students:', error);
+                });
+        }
+
+        function addStudent() {
+            const formData = new FormData(document.getElementById('add-student-form'));
+            fetch('add_student.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to add student');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    fetchStudents(); // Refresh the student list
+                    document.getElementById('add-student-form').reset();
+                } else {
+                    throw new Error('Error adding student');
+                }
+            })
+            .catch(error => {
+                console.error(error.message);
+                alert(error.message);
+            });
+        }
+    </script>
+</body>
+</html>

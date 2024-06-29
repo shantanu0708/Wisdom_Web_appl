@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form - Cloud Computing Lab</title>
+    <link rel="icon" type="image/x-icon" href="..\mentor_campus.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding-top: 50px;
+            text-align: left;
+            max-width: 1200px; 
+            margin: auto;
+            margin-left: 150px;
+        }
+        .dropdown {
+            display: inline-block;
+        }
+        .dropdown-menu {
+            text-align: center;
+            min-width: 100px;
+        }
+        .dropdown-item {
+            text-align: center;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;            
+            background-color: #000;
+            color: #fff;
+            padding-top: 20px;
+        }
+        .sidebar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .sidebar-menu {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar-menu li {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .sidebar-menu li:last-child {
+            border-bottom: none;
+        }
+        .sidebar-menu li a {
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-brand">Feedback Form</div>
+        <ul class="sidebar-menu">
+            <li><a href="..\student_dashboard\subjectwise_feedback.html"><i class="fas fa-home"></i> Back</a></li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="container"> 
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1><strong>Cloud Computing Lab</strong></h1>
+            </div>
+        </div>
+
+        <form method="post" action="CC_lab_form.php"> 
+            <div class="form-group" style="display: none;">
+                <input type="number" class="form-control" id="login_id_1" name="login_id_" required>
+            </div>
+
+            <div class="container pt-5">
+                <h2>Q1] Whether contents and concepts of the course were delivered systematically?</h2>
+                <select class="form-control" name="q1">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <!-- <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" name="q1">Select</button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">1</a>
+                        <a href="#" class="dropdown-item">2</a>
+                        <a href="#" class="dropdown-item">3</a>
+                        <a href="#" class="dropdown-item">4</a>
+                        <a href="#" class="dropdown-item">5</a>
+                    </div>
+                </div> -->
+            </div>
+            
+            <div class="container pt-5">
+                <h2>Q2] Whether the faculty was able to teach the course using different teaching methods with good communication skills?</h2>
+                <select class="form-control" name="q2">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <!-- <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" name="q2">Select</button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">1</a>
+                        <a href="#" class="dropdown-item">2</a>
+                        <a href="#" class="dropdown-item">3</a>
+                        <a href="#" class="dropdown-item">4</a>
+                        <a href="#" class="dropdown-item">5</a>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="container pt-5">
+                <h2>Q3] Did the faculty improve your understanding and motivate you to think and learn by industry/relevant examples?</h2>
+                <select class="form-control" name="q3">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <!-- <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" name="q3">Select</button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">1</a>
+                        <a href="#" class="dropdown-item">2</a>
+                        <a href="#" class="dropdown-item">3</a>
+                        <a href="#" class="dropdown-item">4</a>
+                        <a href="#" class="dropdown-item">5</a>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="container pt-5">
+                <h2>Q4] Whether you were encouraged to participate in the learning process?</h2>
+                <select class="form-control" name="q4">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <!-- <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" name="q4">Select</button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">1</a>
+                        <a href="#" class="dropdown-item">2</a>
+                        <a href="#" class="dropdown-item">3</a>
+                        <a href="#" class="dropdown-item">4</a>
+                        <a href="#" class="dropdown-item">5</a>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="container pt-5">
+                <h2>Q5] Were the tests and assignments thought-provoking to improve the learning levels?</h2>
+                <select class="form-control" name="q5">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <!-- <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" name="q5">Select</button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">1</a>
+                        <a href="#" class="dropdown-item">2</a>
+                        <a href="#" class="dropdown-item">3</a>
+                        <a href="#" class="dropdown-item">4</a>
+                        <a href="#" class="dropdown-item">5</a>
+                    </div>
+                </div> -->
+            </div>
+
+            <center><button type="submit" class="btn btn-primary mt-5">Submit Feedback</button></center> 
+        </form>
+    </div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        var login_id = localStorage.getItem('login_id');
+        var lid = document.getElementById('login_id_1');
+        lid.value = login_id;
+    </script>
+</body>
+</html>
